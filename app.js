@@ -87,10 +87,12 @@ console.log(avg({
 // ================================================
 
 // Assignment 5: Algorithm Practice (Advanced Optional)
-function twoSum(nums, target) {
+
+// first solution
+function twoSum1(nums, target) {
     let result = [];
     for (let i = 0; i < nums.length; i++) {
-        let rest = target - nums[i];
+        const rest = target - nums[i];
         if (nums.includes(rest)) {
             result.push(i);
         }
@@ -98,7 +100,41 @@ function twoSum(nums, target) {
     return result;
 }
 
-console.log("Assignment 5")
-console.log(twoSum([2, 7, 11, 15], 9));
+function twoSum2(nums, target) {
+    const copy = {};
+    for (let i = 0; i < nums.length; i++) {
+        copy[nums[i]] = i
+    }
+    for (let j = 0; j < nums.length; j++) {
+        let rest = target - nums[j];
+        if(copy.hasOwnProperty(rest) && j !== copy[rest]) {
+            return [j, copy[rest]]
+        }
+    }
+    return "No Matched Pair!"
+}
+
+function create1000Array() {
+    let start = [2, 7];
+    for (let i = 0; i < 998; i++) {
+        const randomNumber = Math.floor(Math.random() * 10) + 8;
+        start.push(randomNumber);
+    }
+    return start;
+}
+
+const testArray = create1000Array();
+console.log(testArray);
+
+console.log("Assignment 5");
+console.log("==========================");
+console.time('twoSum1');
+console.log(twoSum1(testArray, 9));
+console.timeEnd('twoSum1');
+console.log("==========================");
+console.time('twoSum2');
+console.log(twoSum2(testArray, 9));
+console.timeEnd('twoSum2');
+console.log("==========================");
 
 // ================================================
