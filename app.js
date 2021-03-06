@@ -114,17 +114,16 @@ function twoSum2(nums, target) {
     return "No Matched Pair!"
 }
 
-function create1000Array() {
+function create10000Array() {
     let start = [2, 7];
-    for (let i = 0; i < 998; i++) {
+    for (let i = 0; i < 9998; i++) {
         const randomNumber = Math.floor(Math.random() * 10) + 8;
-        start.push(randomNumber);
+        start.unshift(randomNumber);
     }
     return start;
 }
 
-const testArray = create1000Array();
-console.log(testArray);
+const testArray = create10000Array();
 
 console.log("Assignment 5");
 console.log("==========================");
